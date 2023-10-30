@@ -1,0 +1,65 @@
+.buttonStock {
+    width: 145px; 
+    height: 45px;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px; 
+    background-color: rgb(225 225 225); 
+    color: rgb(69 69 81);
+    font-size: 25px;
+}
+
+.buttonStock:hover {
+    cursor: pointer;
+    background-color: rgb(167, 165, 165);
+}
+
+.buttonBig {
+    width: 380px; 
+    height: 64px;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px; 
+    background-color: rgb(225 225 225); 
+    color: rgb(69 69 81);
+    font-size: 25px;
+}
+
+.buttonBig:hover {
+    cursor: pointer;
+    background-color: rgb(167, 165, 165);
+}
+.buttonDone {
+    width: 180px; 
+    height: 64px;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    /* margin-right: 20px;  */
+    /* background-color: rgb(225 225 225);  */
+    color: rgb(69 69 81);
+    font-size: 25px;
+}
+
+.buttonDone:hover {
+    cursor: pointer;
+    background-color: rgb(167, 165, 165);
+}
+.buttonDelete {
+    width: 170px; 
+    height: 64px;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    /* margin-right: 20px;  */
+    /* background-color: rgb(225 225 225);  */
+    color: rgb(69 69 81);
+    font-size: 25px;
+}
+
+.buttonDelete:hover {
+    cursor: pointer;
+    background-color: rgb(167, 165, 165);
+}

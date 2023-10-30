@@ -1,5 +1,5 @@
-import Header from './views/Header/Header';
-import Main from './views/Main/Main';
+import Header from "./views/Header/Header";
+import Main from "./views/Main/Main";
 
 function App() {
   // App.jsx - содержит состояние и всю логику, рендерит все приложение
@@ -27,10 +27,12 @@ function App() {
   // 9. Данные списка должны сохраняться в Local Storage (после перезагрузки страницы, все данные должны остаться на месте).
 
   return (
-    <div className='App'>
-      <Header />
-      <Main />
-    </div>
+    <>
+      <div className="wrapper">
+        <Header />
+        <Main />
+      </div>
+    </>
   );
 }
 

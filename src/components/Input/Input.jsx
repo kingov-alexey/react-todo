@@ -1,4 +1,5 @@
-import React from 'react';
+import React from "react";
+import styles from "./Input.module.css";
 
 function Input(props) {
   // Input.jsx - рендерит разные инпуты
@@ -7,9 +8,20 @@ function Input(props) {
   // placeholder: string;
   // value: string;
   // onChange: function;
+
+  const dynamicClassName = styles[props.className];
+  const onChangeInput = ()=>{
+    console.log('onChangeInput');
+  }
+
   return (
     <>
-      <div>Input</div>
+      <input
+        className={dynamicClassName}
+        placeholder={props.placeholder}
+        value={props.value}
+        onChange={onChangeInput}
+      />
     </>
   );
 }

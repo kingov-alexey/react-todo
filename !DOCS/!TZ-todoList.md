@@ -65,3 +65,6 @@ onChange: function;
 mock-data.js - фейковые данные
 
 <!-- ^^^ ЗАМЕТКИ ^^^ -->
+
+https://www.figma.com/file/iPFjNcsEUIAeEEqblSrKoX/react-todo?type=design&node-id=0%3A1&mode=design&t=K6TrcTsVw37vsJAr-1
+
