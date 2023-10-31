@@ -1,5 +1,5 @@
-import React from 'react';
-import styles from './Button.module.css';
+import React from "react";
+import styles from "./Button.module.css";
 
 function Button(props) {
   // Button.jsx - рендерит разные кнопки
@@ -9,10 +9,9 @@ function Button(props) {
   // onClick: function;
 
   const dynamicClassName = styles[props.className];
-  const onClick = props.onDoneClick;
+  const onClick = props.onClick;
 
   const onClickButton = () => {
-    alert(props.text);
     onClick();
   };
   return (

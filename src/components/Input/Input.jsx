@@ -10,9 +10,9 @@ function Input(props) {
   // onChange: function;
 
   const dynamicClassName = styles[props.className];
-  const onChangeInput = ()=>{
-    console.log('onChangeInput');
-  }
+  const onChangeInput = () => {
+    console.log("onChangeInput");
+  };
 
   return (
     <>

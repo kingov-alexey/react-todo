@@ -1,14 +1,19 @@
-import React from 'react';
-import Item from '../Item/Item';
+import React from "react";
+import Item from "../Item/Item";
+import { AppContext } from "../../App";
 
-function ItemList(props) {
+function ItemList() {
+  const { itemList } = React.useContext(AppContext);
+
   return (
     <>
       <div>
-        <Item id='111' text='do homework' date='1986.05.15' onDoneClick={props.onDoneClick} />
-        <Item id='222' text='read a book' date='1986.05.15' />
-        <Item id='333' text='fix laptop' date='1986.05.15' />
-        <Item id='444' text='buy some milk' date='1986.05.15' />
+        {/* <Item id='ID' text="Title task" date="date" /> */}
+        {itemList.map((el) => {
+          return (
+            <Item key={el.id} id={el.id} text={el.titleTask} date={el.date} />
+          );
+        })}
       </div>
     </>
   );
