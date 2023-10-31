@@ -1,6 +1,6 @@
-import React from "react";
-import styles from "./Item.module.css";
-import Button from "../Button/Button";
+import React from 'react';
+import styles from './Item.module.css';
+import Button from '../Button/Button';
 
 function Item(props) {
   //   Item.jsx - рендерит элемент списка
@@ -11,17 +11,17 @@ function Item(props) {
   // onDoneClick: funcion;
   // onDeleteClick: function;
 
+  const onDoneClick = props.onDoneClick;
+
   return (
     <>
       <div className={styles.itemWrap}>
         {/* <div>{props.id}</div> */}
         <div className={styles.titleTask}>{props.text}</div>
         <div className={styles.blockRight}>
-          <div className={styles.date}>
-            {props.date}
-          </div>
-          <Button text="✔" className="buttonDone"/>
-          <Button text="❌" className="buttonDelete" />
+          <div className={styles.date}>{props.date}</div>
+          <Button text='✔' className='buttonDone' onDoneClick={props.onDoneClick} />
+          <Button text='❌' className='buttonDelete' />
         </div>
       </div>
     </>
