@@ -1,0 +1,18 @@
+.search {
+    display: flex;
+    align-items: center;
+    height: 35px;
+    border-radius: 15px;
+    border: 1px solid #000;
+    margin: 10px 0;
+    padding: 0 10px;
+}
+
+.iconSearch {
+    width: 25px;
+    height: 25px;
+    background-image: url('../../assets/images/icon/iconSearch.png');
+    background-repeat: no-repeat;
+    margin-top: 5px;
+
+}

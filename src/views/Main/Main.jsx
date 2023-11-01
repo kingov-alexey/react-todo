@@ -11,16 +11,6 @@ function Main() {
   return (
     <>
       <main className={styles.main}>
-        <div className={styles.title}>
-          <h1 className={styles.h1}>ToDO List</h1>
-        </div>
-        <div className={styles.taskAdd}>
-          <Input
-            placeholder="What do you want to do?"
-            className="inputTaskAdd"
-          />
-          <Button text="ADD" className="buttonBig" onClick={onAddClick} />
-        </div>
         <div className={styles.itemList}>
           <ItemList />
         </div>

@@ -1,23 +1,7 @@
-.main{
-    /* border: 1px dotted black; */
-}
-
-.title{
-    display: flex;
-    justify-content: center;
-    background-color: #1daa31;
-}
-
-.h1{
-    margin: 0;
-    color: white;
-    font-size: 40px;
-}
-
-.taskAdd{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #1daa31;
-    padding: 50px;
+.main {
+    border-radius: 15px;
+    border: 1px solid #000;
+    flex: 1;
+    margin-bottom: 55px;
+    /* padding: 10px; */
 }

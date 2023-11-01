@@ -20,13 +20,17 @@ function Item(props) {
 
   return (
     <>
-      <div className={styles.itemWrap}>
-        <div>{props.id}</div>
-        <div className={styles.titleTask}>{props.text}</div>
-        <div className={styles.blockRight}>
-          <div className={styles.date}>{props.date}</div>
+      <div className={styles.tableRow}>
+        <div className={styles.tableCell}>{props.id}</div>
+        <div className={styles.tableCell}>{props.text}</div>
+        <div className={styles.tableCell}>{props.date}</div>
+        <div className={styles.tableCell}>
           <Button text="✔ Done" className="buttonDone" onClick={onDoneClick} />
-          <Button text="🖋 Edit" className="buttonDone" onClick={onEditClick} />
+        </div>
+        <div className={styles.tableCell}>
+          <Button text="🖋 Edit" className="buttonDone" onClick={onDoneClick} />
+        </div>
+        <div className={styles.tableCell}>
           <Button
             text="❌ Delete"
             className="buttonDelete"

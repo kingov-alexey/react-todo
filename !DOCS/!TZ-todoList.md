@@ -73,3 +73,4 @@ https://www.figma.com/file/iPFjNcsEUIAeEEqblSrKoX/react-todo?type=design&node-id
 2 часа структура
 4 часа верстка
 4 часа прокинул контекст, проверил стейт
+8 часов редизайн (создание макета и верстка)

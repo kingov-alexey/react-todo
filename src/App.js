@@ -1,6 +1,8 @@
 import React from "react";
 import Header from "./views/Header/Header";
 import Main from "./views/Main/Main";
+import Fillter from "./views/Fillter/Fillter";
+import Footer from "./views/Footer/Footer";
 
 export const AppContext = React.createContext(null);
 
@@ -78,7 +80,9 @@ function App() {
       >
         <div className="wrapper">
           <Header />
+          <Fillter />
           <Main />
+          <Footer />
         </div>
       </AppContext.Provider>
     </>

@@ -17,7 +17,7 @@ function Button(props) {
   return (
     <>
       <div className={dynamicClassName} onClick={onClickButton}>
-        {props.text}
+        {props.text}{props.className === 'buttonADD' && <div className={styles.buttonADDIcon}></div>}
       </div>
     </>
   );
