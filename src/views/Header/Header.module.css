@@ -4,30 +4,37 @@
   padding: 10px 0;
 }
 
-.logo{
+.logo {
   display: flex;
-  align-items:center;
+  align-items: center;
   cursor: pointer;
 }
 
-.logoIMG{
-margin: 10px 0;
+.logoIMG {
+  width: 90px;
+
+  margin: 10px 0;
+
 }
 
-.wrapTextLogo{
+.wrapTextLogo {
   margin-left: 10px;
+  min-width: 210px;
 }
 
-.title{
-  margin:0;
+.title {
+  margin: 0;
+  /* color: #61dafb; */
 }
-.description{
+
+.description {
   font-size: 25px;
 }
 
-.inputBlock{
+.inputBlock {
   display: flex;
-  align-items:center;
+  align-items: center;
+  width: 100%;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -40,6 +47,7 @@ margin: 10px 0;
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }

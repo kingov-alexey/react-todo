@@ -19,6 +19,10 @@
     flex: 1;
     padding: 10px;
     border: 1px solid #ccc;
+    /* min-width: 140px; */
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
 
 }
 
@@ -47,7 +51,7 @@
 }
 
 .headerCell:nth-child(1) {
-    max-width: 80px;
+    max-width: 30px;
 }
 
 .headerCell:nth-child(2) {
@@ -55,7 +59,7 @@
 }
 
 .headerCell:nth-child(3) {
-    max-width: 230px;
+    max-width: 200px;
 }
 
 .headerCell:nth-child(4),

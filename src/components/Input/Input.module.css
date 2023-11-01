@@ -4,12 +4,13 @@
     font-size: 25px;
     border: 0;
     background: transparent;
+    padding: 0 10px;
 }
 
 .inputTaskAdd {
     min-width: 400px;
     width: 100%;
-    margin: 0 10px;
+    margin: 0 20px;
     height: 80px;
     border: 0;
     border-bottom: 1px solid black;
@@ -18,10 +19,12 @@
     background: transparent;
 }
 
-.inputTaskAdd, .inputFilter:focus {
+.inputTaskAdd,
+.inputFilter:focus {
     outline: none;
 }
 
-.inputTaskAdd, .inputFilter::placeholder {
+.inputTaskAdd,
+.inputFilter::placeholder {
     font-family: 'Vollkorn', serif;
 }

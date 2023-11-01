@@ -1,7 +1,7 @@
-import React from "react";
-import styles from "./Item.module.css";
-import Button from "../Button/Button";
-import { AppContext } from "../../App";
+import React from 'react';
+import styles from './Item.module.css';
+import Button from '../Button/Button';
+import { AppContext } from '../../App';
 
 function Item(props) {
   // Item.jsx - рендерит элемент списка
@@ -15,8 +15,7 @@ function Item(props) {
   // 3. Элемент списка должен содержать
   // текст, дату (рандомную), кнопку выполнения и кнопку удаления;
 
-  const { onDoneClick, onEditClick, onDeleteClick } =
-    React.useContext(AppContext);
+  const { onDoneClick, onEditClick, onDeleteClick } = React.useContext(AppContext);
 
   return (
     <>
@@ -25,17 +24,13 @@ function Item(props) {
         <div className={styles.tableCell}>{props.text}</div>
         <div className={styles.tableCell}>{props.date}</div>
         <div className={styles.tableCell}>
-          <Button text="✔ Done" className="buttonDone" onClick={onDoneClick} />
+          <Button text='✔ Done' className='buttonDone' onClick={onDoneClick} />
         </div>
         <div className={styles.tableCell}>
-          <Button text="🖋 Edit" className="buttonDone" onClick={onDoneClick} />
+          <Button text='🖋 Edit' className='buttonEdit' onClick={onDoneClick} />
         </div>
         <div className={styles.tableCell}>
-          <Button
-            text="❌ Delete"
-            className="buttonDelete"
-            onClick={onDeleteClick}
-          />
+          <Button text='✖ Delete' className='buttonDelete' onClick={onDeleteClick} />
         </div>
       </div>
     </>

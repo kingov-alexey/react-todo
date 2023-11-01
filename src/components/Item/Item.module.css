@@ -5,7 +5,7 @@
 
 .tableRow:hover {
     display: flex;
-    background-color: #dddddd;
+    background-color: #61dafb;
     /* border: 1px black dotted; */
 }
 
@@ -16,18 +16,22 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    display: flex;
+    justify-content: center;
 }
 
 .tableCell:nth-child(1) {
-    max-width: 80px;
+    max-width: 30px;
 }
 
 .tableCell:nth-child(2) {
     max-width: 420px;
+    /* align-items: start; */
+    justify-content: start;
 }
 
 .tableCell:nth-child(3) {
-    max-width: 230px;
+    max-width: 200px;
 }
 
 .tableCell:nth-child(4),

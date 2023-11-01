@@ -1,5 +1,5 @@
-import React from "react";
-import styles from "./Input.module.css";
+import React from 'react';
+import styles from './Input.module.css';
 
 function Input(props) {
   // Input.jsx - рендерит разные инпуты
@@ -11,7 +11,7 @@ function Input(props) {
 
   const dynamicClassName = styles[props.className];
   const onChangeInput = () => {
-    console.log("onChangeInput");
+    console.log('onChangeInput');
   };
 
   return (

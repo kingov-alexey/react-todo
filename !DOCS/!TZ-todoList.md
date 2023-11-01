@@ -66,10 +66,14 @@ mock-data.js - фейковые данные
 
 <!-- ^^^ ЗАМЕТКИ ^^^ -->
 
+#TASKS
+https://drive.google.com/drive/folders/1rAPdXMHH2rljX6vU62BJ0bEyookGYHhQ
 
+#LAYOUT
 https://www.figma.com/file/iPFjNcsEUIAeEEqblSrKoX/react-todo?type=design&node-id=0%3A1&mode=design&t=K6TrcTsVw37vsJAr-1
 
-Трекер времени:
+# Time Tracker
+
 2 часа структура
 4 часа верстка
 4 часа прокинул контекст, проверил стейт

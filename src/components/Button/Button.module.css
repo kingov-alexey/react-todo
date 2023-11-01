@@ -1,23 +1,26 @@
 .buttonStock {
     width: 145px;
-    height: 45px;
+    height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 20px;
-    background-color: rgb(225 225 225);
-    color: rgb(69 69 81);
-    font-size: 25px;
+    /* margin-right: 20px; */
+    border: 1px solid black;
+    margin-left: 20px;
+    background-color: #61dafb;
+    color: #000000;
+    font-size: 20px;
+    border-radius: 15px;
 }
 
 .buttonStock:hover {
     cursor: pointer;
-    background-color: rgb(167, 165, 165);
+    background-color: transparent;
 }
 
 .buttonADD {
     display: flex;
-    align-items:center;
+    align-items: center;
     justify-content: center;
     border-radius: 15px;
     border: 1px solid #000;
@@ -26,21 +29,23 @@
     cursor: pointer;
     font-size: 30px;
 }
+
 .buttonADDIcon {
     width: 49px;
     height: 45px;
     background-image: url('../../assets/images/icon/iconADD.png');
     background-repeat: no-repeat;
-    background-size:cover;
+    background-size: cover;
 }
 
 .buttonADD:hover {
-    background-color: rgb(100, 236, 153, 0.5);
+    background-color: #61dafb;
 }
 
 .buttonDone {
     border-radius: 15px;
     border: 1px solid black;
+    width: 110px;
     height: 30px;
     display: flex;
     align-items: center;
@@ -51,12 +56,17 @@
 
 .buttonDone:hover {
     cursor: pointer;
-    background-color: rgb(180, 191, 228);
+    background-color: hsl(103, 100%, 51%);
+    /* background: radial-gradient(hsl(103, 100%, 51%), rgba(13, 13, 202, 0.295)); */
+    /* text-shadow: #61dafb; */
+    /* text-shadow: 0 0 30px rgba(255, 255, 255); */
+
 }
 
-.buttonDelete {
+.buttonEdit {
     border-radius: 15px;
     border: 1px solid black;
+    width: 110px;
     height: 30px;
     display: flex;
     align-items: center;
@@ -65,7 +75,24 @@
     font-size: 25px;
 }
 
+.buttonEdit:hover {
+    cursor: pointer;
+    background-color: rgb(251, 255, 23);
+}
+
+.buttonDelete {
+    border-radius: 15px;
+    border: 1px solid black;
+    width: 110px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(0, 0, 0);
+    font-size: 25px;
+}
+
 .buttonDelete:hover {
     cursor: pointer;
-    background-color: rgb(167, 165, 165);
+    background-color: rgb(255, 0, 0);
 }
