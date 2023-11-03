@@ -49,6 +49,15 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.tableCellColor {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background-color: green;
+}
 
 .headerCell:nth-child(1) {
     max-width: 30px;

@@ -1,26 +1,33 @@
-import React from 'react';
-import styles from './Input.module.css';
+import React from "react";
+import styles from "./Input.module.css";
+import { AppContext } from "../../App";
 
 function Input(props) {
-  // Input.jsx - рендерит разные инпуты
-  // props:
-  // className: string;
-  // placeholder: string;
-  // value: string;
-  // onChange: function;
+  const { onAddClick } = React.useContext(AppContext);
 
-  const dynamicClassName = styles[props.className];
-  const onChangeInput = () => {
-    console.log('onChangeInput');
+  const className = styles[props.className];
+  const placeholder = props.placeholder;
+  const value = props.value;
+  const onChange = props.onChange;
+
+  const handleChangeInput = (e) => {
+    onChange(e.target.value);
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" && props.className != 'buttonADD') {
+      onAddClick();
+    }
   };
 
   return (
     <>
       <input
-        className={dynamicClassName}
-        placeholder={props.placeholder}
-        value={props.value}
-        onChange={onChangeInput}
+        className={className}
+        placeholder={placeholder}
+        value={value}
+        onChange={handleChangeInput}
+        onKeyDown={handleKeyDown}
       />
     </>
   );

@@ -17,10 +17,11 @@ function ItemList() {
           <div className={styles.headerCell}>EDIT</div>
           <div className={styles.headerCell}>REMOVE</div>
         </div>
+
         <div className={styles.tableBody}>
           {itemList.map((el) => {
             return (
-              <Item key={el.id} id={el.id} text={el.titleTask} date={el.date} />
+              <Item key={el.id} id={el.id} text={el.titleTask} date={el.date} status={el.status}/>
             );
           })}
         </div>

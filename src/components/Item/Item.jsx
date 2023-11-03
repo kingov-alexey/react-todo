@@ -21,10 +21,10 @@ function Item(props) {
     <>
       <div className={styles.tableRow}>
         <div className={styles.tableCell}>{props.id}</div>
-        <div className={styles.tableCell}>{props.text}</div>
+        <div className={styles.tableCell}>{props.text}{props.status}</div>
         <div className={styles.tableCell}>{props.date}</div>
-        <div className={styles.tableCell}>
-          <Button text='✔ Done' className='buttonDone' onClick={onDoneClick} />
+        <div className={styles.tableCell}>{props.status === 'done' ? '' : <Button text='✔ Done' className='buttonDone' onClick={onDoneClick} />}
+          
         </div>
         <div className={styles.tableCell}>
           <Button text='🖋 Edit' className='buttonEdit' onClick={onDoneClick} />

@@ -5,8 +5,8 @@ import Input from '../../components/Input/Input';
 import { AppContext } from '../../App';
 import logoImage from '../../assets/images/logoImage.png';
 
-function Header(props) {
-  const { onAddClick, onSortByNameClick, onSortByDateClick } = React.useContext(AppContext);
+function Header() {
+  const { onAddClick,inputTaskAddValue, setInputTaskAddValue} = React.useContext(AppContext);
 
   const value = {
     id: '555',
@@ -32,32 +32,16 @@ function Header(props) {
             <div className={styles.description}>JUST DO IT! NOW!</div>
           </div>
 
-          {/* <img src={logoText} className={styles.logoText} alt="logoText" /> */}
         </div>
 
         <div className={styles.inputBlock}>
-          <Input placeholder='What do you want to do?' className='inputTaskAdd' />
+          <Input placeholder='What do you want to do?' className='inputTaskAdd' value={inputTaskAddValue} onChange={setInputTaskAddValue} />
         </div>
 
         <div className={styles.buttonAdd}>
           <Button text='ADD TASK' className='buttonADD' onClick={addClick} />
         </div>
 
-        {/* <div className={styles.leftBlock}>
-          <Button
-            text="sortByName"
-            className="buttonStock"
-            onClick={onSortByNameClick}
-          />
-          <Button
-            text="sortByDate"
-            className="buttonStock"
-            onClick={onSortByDateClick}
-          />
-        </div>
-        <div className={styles.rightBlock}>
-          <Input placeholder="Filter" className="inputFilter" />
-        </div> */}
       </header>
     </>
   );
