@@ -15,7 +15,7 @@ function Input(props) {
   };
 
   const handleKeyDown = (e) => {
-    if (e.key === "Enter" && props.className != 'buttonADD') {
+    if (e.key === "Enter" && props.className != "buttonADD") {
       onAddClick();
     }
   };

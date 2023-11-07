@@ -49,6 +49,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
 .tableCellColor {
     flex: 1;
     padding: 10px;
@@ -63,8 +64,11 @@
     max-width: 30px;
 }
 
-.headerCell:nth-child(2) {
+/* .headerCell:nth-child(2) {
     max-width: 420px;
+} */
+.headerCell:nth-child(2) {
+    max-width: 580px;
 }
 
 .headerCell:nth-child(3) {

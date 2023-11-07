@@ -21,6 +21,7 @@ function App() {
     //ТО ПОЛНОСТЬЮ ПЕРЕЗАПИСЫВАЮ itemList
   }, []);
 
+  //CREATE ITEM
   const onAddClick = () => {
     if (inputTaskAddValue) {
       //формирую дату время
@@ -30,7 +31,7 @@ function App() {
       const day = String(currentDate.getDate()).padStart(2, "0");
       const hours = String(currentDate.getHours()).padStart(2, "0");
       const minutes = String(currentDate.getMinutes()).padStart(2, "0");
-      const formattedDate = `${year}.${month}.${day} ${hours}:${minutes}`;
+      const formattedDate = `${day}.${month}.${year} ${hours}:${minutes}`;
 
       //формирую id
       const id =
@@ -55,19 +56,32 @@ function App() {
         "Ваше текстовое поле пустое, перед добавлением его необходимо заполнить!"
       );
     }
+
     // 9. Данные списка должны сохраняться в Local Storage
     //(после перезагрузки страницы, все данные должны остаться на месте).
 
-    console.log(inputTaskAddValue);
+    console.log("inputTaskAddValue", inputTaskAddValue);
   };
+
+  //UPDATE ITEM
+  const updateItemById = (id, updatedItem) => {
+    const updatedItems = itemList.map((item) => {
+      if (item.id === id) {
+        // Если id совпадает, обновляем элемент
+        return { ...item, ...updatedItem };
+      }
+      return item;
+    });
+
+    setItemList(updatedItems);
+  };
+
   const onEditClick = () => {
     alert("was click onEditClick function in app.js");
   };
 
-  const onDoneClick = () => {
-    alert("was click onDoneClick function in app.js");
-    // 4. По нажатии кнопки выполнения,
-    // элемент списка должен подсветиться выполненным;
+  const onDoneClick = (id, newItem) => {
+    updateItemById(id, newItem);
   };
 
   const onDeleteClick = () => {
@@ -88,6 +102,7 @@ function App() {
 
   const onFilterTextChange = () => {
     // 8. Добавить фильтр списка по тексту;
+    alert("was change onSortByDateClick function in app.js");
   };
 
   return (
@@ -111,7 +126,11 @@ function App() {
         <div className="wrapper">
           <Header />
           <Filter />
-          <Main />
+          <Main
+            onDoneClick={onDoneClick}
+            onDeleteClick={onDeleteClick}
+            itemList={itemList}
+          />
           <Footer />
         </div>
       </AppContext.Provider>

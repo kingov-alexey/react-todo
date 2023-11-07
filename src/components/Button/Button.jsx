@@ -2,22 +2,19 @@ import React from "react";
 import styles from "./Button.module.css";
 
 function Button(props) {
-  // Button.jsx - рендерит разные кнопки
-  // props:
-  // className: string;
-  // text: string;
-  // onClick: function;
-
   const dynamicClassName = styles[props.className];
   const onClick = props.onClick;
 
-  const onClickButton = () => {
+  const handleOnClick = () => {
     onClick();
   };
   return (
     <>
-      <div className={dynamicClassName} onClick={onClickButton}>
-        {props.text}{props.className === 'buttonADD' && <div className={styles.buttonADDIcon}></div>}
+      <div className={dynamicClassName} onClick={handleOnClick}>
+        {props.text}
+        {props.className === "buttonADD" && (
+          <div className={styles.buttonADDIcon}></div>
+        )}
       </div>
     </>
   );

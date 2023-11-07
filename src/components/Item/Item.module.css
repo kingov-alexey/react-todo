@@ -20,13 +20,20 @@
     justify-content: center;
 }
 
+.greenBackground {
+    background: rgba(165, 255, 157, 0.29);
+}
+
 .tableCell:nth-child(1) {
     max-width: 30px;
 }
 
-.tableCell:nth-child(2) {
+/* .tableCell:nth-child(2) {
     max-width: 420px;
-    /* align-items: start; */
+    justify-content: start;
+} */
+.tableCell:nth-child(2) {
+    max-width: 580px;
     justify-content: start;
 }
 
