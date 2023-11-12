@@ -1,6 +1,6 @@
-import React from "react";
-import styles from "./Item.module.css";
-import Button from "../Button/Button";
+import React from 'react';
+import styles from './Item.module.css';
+import Button from '../Button/Button';
 // import { AppContext } from "../../App";
 
 function Item(props) {
@@ -9,9 +9,10 @@ function Item(props) {
 
   const onDoneClick = props.onDoneClick;
   const onDeleteClick = props.onDeleteClick;
+  const onEditClick = props.onEditClick;
 
   const handleDoneClick = () => {
-    const newStatus = props.status === "done" ? "new" : "done";
+    const newStatus = props.status === 'done' ? 'new' : 'done';
     const newItem = {
       id: props.id,
       titleTask: props.text,
@@ -22,46 +23,34 @@ function Item(props) {
   };
 
   const handleDeleteClick = () => {
-    onDeleteClick();
+    onDeleteClick(props.id);
   };
 
-  // const handleEditClick = () => {
-  // };
+  const handleEditClick = () => {
+    // const newItem
+    onEditClick(props.id);
+  };
 
   return (
     <>
       <div
-        className={`${styles.tableRow} ${
-          props.status === "done" ? styles.greenBackground : ""
-        }`}
+        className={`${styles.tableRow} ${props.status === 'done' ? styles.greenBackground : ''}`}
       >
         <div className={styles.tableCell}>{props.id}</div>
         <div className={styles.tableCell}>{props.text}</div>
         <div className={styles.tableCell}>{props.date}</div>
         <div className={styles.tableCell}>
-          {props.status === "done" ? (
-            <Button
-              text="✔ Done"
-              className="buttonDone"
-              onClick={handleDoneClick}
-            />
+          {props.status === 'done' ? (
+            <Button text='✔ Done' className='buttonDone' onClick={handleDoneClick} />
           ) : (
-            <Button
-              text="New"
-              className="buttonDone"
-              onClick={handleDoneClick}
-            />
+            <Button text='New' className='buttonDone' onClick={handleDoneClick} />
           )}
         </div>
-        {/* <div className={styles.tableCell}>
-          <Button text='🖋 Edit' className='buttonEdit' onClick={handleEditClick} />
-        </div> */}
         <div className={styles.tableCell}>
-          <Button
-            text="✖ Delete"
-            className="buttonDelete"
-            onClick={handleDeleteClick}
-          />
+          <Button text='🖋 Edit' className='buttonEdit' onClick={handleEditClick} />
+        </div>
+        <div className={styles.tableCell}>
+          <Button text='✖ Delete' className='buttonDelete' onClick={handleDeleteClick} />
         </div>
       </div>
     </>

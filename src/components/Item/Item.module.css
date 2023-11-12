@@ -5,8 +5,11 @@
 
 .tableRow:hover {
     display: flex;
-    background-color: #61dafb;
-    /* border: 1px black dotted; */
+    /* background-color: rgba(253, 255, 141, 0.904); */
+    background-image: url('./../../assets/images/patern.png');
+    /* background-repeat: repeat-x; */
+    background-size: cover;
+
 }
 
 .tableCell {

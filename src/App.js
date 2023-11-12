@@ -1,133 +1,148 @@
-import React from "react";
-import Header from "./views/Header/Header";
-import Main from "./views/Main/Main";
-import Filter from "./views/Filter/Filter";
-import Footer from "./views/Footer/Footer";
-import { mockData } from "./data/mock-data";
+import React from 'react';
+import Header from './views/Header/Header';
+import Main from './views/Main/Main';
+import Filter from './views/Filter/Filter';
+import Footer from './views/Footer/Footer';
+import { mockData } from './data/mock-data';
 
 export const AppContext = React.createContext(null);
 
 function App() {
   const [itemList, setItemList] = React.useState([]);
-  const [inputTaskAddValue, setInputTaskAddValue] = React.useState("");
-  const [inputFilterValue, setInputFilterValue] = React.useState("");
+  const [inputTaskAddValue, setInputTaskAddValue] = React.useState('');
+  const [inputFilterValue, setInputFilterValue] = React.useState('');
 
-  React.useEffect(() => {
-    if (itemList.length === 0) {
-      setItemList(mockData);
-    }
-
-    //ЗДЕСЬ В ТУПУЮ НАЧИНАЮ ЛОМИТЬСЯ НА ЛОКАЛСТОРОДЖ И ЕСЛИ ТАМ ЧЧТОТО ЕСТЬ
-    //ТО ПОЛНОСТЬЮ ПЕРЕЗАПИСЫВАЮ itemList
-  }, []);
-
-  //CREATE ITEM
+  //#region CREATE ITEM
   const onAddClick = () => {
-    if (inputTaskAddValue) {
-      //формирую дату время
+    console.log(inputTaskAddValue.trim().length);
+    if (inputTaskAddValue && inputTaskAddValue.trim().length > 0) {
+      //??? формирую дату создания
       const currentDate = new Date();
       const year = currentDate.getFullYear();
-      const month = String(currentDate.getMonth() + 1).padStart(2, "0");
-      const day = String(currentDate.getDate()).padStart(2, "0");
-      const hours = String(currentDate.getHours()).padStart(2, "0");
-      const minutes = String(currentDate.getMinutes()).padStart(2, "0");
-      const formattedDate = `${day}.${month}.${year} ${hours}:${minutes}`;
+      const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+      const day = String(currentDate.getDate()).padStart(2, '0');
+      const hours = String(currentDate.getHours()).padStart(2, '0');
+      const minutes = String(currentDate.getMinutes()).padStart(2, '0');
+      const seconds = String(currentDate.getSeconds()).padStart(2, '0');
+      const dataCreate = `${day}.${month}.${year} / ${hours}:${minutes}:${seconds}`;
+      //??? формирую id
+      const id = itemList.length === 0 ? 1 : Math.max(...itemList.map(item => item.id)) + 1;
 
-      //формирую id
-      const id =
-        itemList.length === 0
-          ? 1 // Если массив пустой, начнем с 1
-          : Math.max(...itemList.map((item) => item.id)) + 1;
-
+      //новый объект на обновление
       const newItem = {
         id: id,
         titleTask: inputTaskAddValue,
-        date: formattedDate,
-        status: "new",
+        date: dataCreate,
+        status: 'new',
       };
 
-      setItemList((prevItemList) => [...prevItemList, newItem]);
-
-      setInputTaskAddValue("");
+      //???
+      setItemList(prevItemList => [...prevItemList, newItem]);
     } else {
-      // 2. При пустом инпуте и нажатии кнопки Add
-      // выдается сообщение с просьбой заполнить поле;
-      alert(
-        "Ваше текстовое поле пустое, перед добавлением его необходимо заполнить!"
-      );
+      alert('Поле ввода пустое или с пробелами, необходимо добавить содержимое!');
     }
-
-    // 9. Данные списка должны сохраняться в Local Storage
-    //(после перезагрузки страницы, все данные должны остаться на месте).
-
-    console.log("inputTaskAddValue", inputTaskAddValue);
+    setInputTaskAddValue('');
   };
+  //#endregion CREATE ITEM
 
-  //UPDATE ITEM
+  //#region READ ITEMS
+  //??? инициализация
+  React.useEffect(() => {
+    const localStorageData = JSON.parse(localStorage.getItem('itemList'));
+
+    if (localStorageData && localStorageData.length > 0) {
+      setItemList(localStorageData);
+    } else {
+      setItemList(prevItemList => (prevItemList.length === 0 ? mockData : prevItemList));
+    }
+  }, []);
+  //#endregion READ ITEMS
+
+  //#region UPDATE ITEM
   const updateItemById = (id, updatedItem) => {
-    const updatedItems = itemList.map((item) => {
+    const newItem = itemList.map(item => {
       if (item.id === id) {
-        // Если id совпадает, обновляем элемент
+        //??? Если id совпадает, обновляем элемент
         return { ...item, ...updatedItem };
       }
       return item;
     });
 
-    setItemList(updatedItems);
+    setItemList(newItem);
   };
 
-  const onEditClick = () => {
-    alert("was click onEditClick function in app.js");
+  const onDoneClick = (id, updatedItem) => {
+    updateItemById(id, updatedItem);
   };
 
-  const onDoneClick = (id, newItem) => {
-    updateItemById(id, newItem);
+  const onEditClick = (id, updatedItem) => {
+    console.log('onEditClick', id, updatedItem);
+    // updateItemById(id, updatedItem);
   };
 
-  const onDeleteClick = () => {
-    alert("was click onDeleteClick function in app.js");
-    // 5. По нажатии кнопки удаления,
-    // элемент списка должен быть удален из списка;
-  };
+  //??? обновление локалСтораж
+  React.useEffect(() => {
+    localStorage.setItem('itemList', JSON.stringify(itemList));
+  }, [itemList]);
+  //#endregion UPDATE ITEM
 
+  //#region DELETE ITEM
+  const onDeleteClick = idToRemove => {
+    setItemList(prevItemList => prevItemList.filter(item => item.id !== idToRemove));
+  };
+  //#endregion DELETE ITEM
+
+  //#region SORT
   const onSortByNameClick = () => {
-    alert("was click onSortByNameClick function in app.js");
-    // 6. Добавить сортировку списка по тексту;
+    const sortedList = [...itemList].sort((a, b) => a.titleTask.localeCompare(b.titleTask));
+    setItemList(sortedList);
   };
 
   const onSortByDateClick = () => {
-    // 7. Добавить сортировку списка по дате;
-    alert("was click onSortByDateClick function in app.js");
+    const sortedList = [...itemList].sort((a, b) => {
+      const dateA = new Date(a.date);
+      const dateB = new Date(b.date);
+      return dateA - dateB;
+    });
+    setItemList(sortedList);
   };
 
-  const onFilterTextChange = () => {
-    // 8. Добавить фильтр списка по тексту;
-    alert("was change onSortByDateClick function in app.js");
+  const onSortByStatusClick = () => {
+    alert('onSortByStatusClick');
   };
+  //#endregion SORT
+
+  //#region FILTER
+  const onFilterTextChange = () => {
+    const filteredList = itemList.filter(item =>
+      item.text.toLowerCase().includes(inputFilterValue.toLowerCase())
+    );
+    setItemList(filteredList);
+  };
+  //#endregion FILTER
 
   return (
     <>
       <AppContext.Provider
         value={{
-          inputFilterValue,
-          setInputFilterValue,
-          inputTaskAddValue,
-          setInputTaskAddValue,
-          itemList,
           onAddClick,
-          onEditClick,
           onDoneClick,
+          onEditClick,
           onDeleteClick,
+          setInputFilterValue,
+          setInputTaskAddValue,
           onSortByNameClick,
           onSortByDateClick,
+          onSortByStatusClick,
           onFilterTextChange,
         }}
       >
-        <div className="wrapper">
+        <div className='wrapper'>
           <Header />
           <Filter />
           <Main
             onDoneClick={onDoneClick}
+            onEditClick={onEditClick}
             onDeleteClick={onDeleteClick}
             itemList={itemList}
           />
