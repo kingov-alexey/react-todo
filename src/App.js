@@ -40,6 +40,7 @@ function App() {
       setItemList(prevItemList => [...prevItemList, newItem]);
     } else {
       alert('Поле ввода пустое или с пробелами, необходимо добавить содержимое!');
+      setInputTaskAddValue('');
     }
     setInputTaskAddValue('');
   };
@@ -125,6 +126,8 @@ function App() {
     <>
       <AppContext.Provider
         value={{
+          inputTaskAddValue,
+          setInputTaskAddValue,
           onAddClick,
           onDoneClick,
           onEditClick,
