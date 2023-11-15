@@ -14,9 +14,8 @@ function App() {
 
   //#region CREATE ITEM
   const onAddClick = () => {
-    console.log(inputTaskAddValue.trim().length);
     if (inputTaskAddValue && inputTaskAddValue.trim().length > 0) {
-      //??? формирую дату создания
+      // формирую дату и время
       const currentDate = new Date();
       const year = currentDate.getFullYear();
       const month = String(currentDate.getMonth() + 1).padStart(2, '0');
@@ -25,10 +24,11 @@ function App() {
       const minutes = String(currentDate.getMinutes()).padStart(2, '0');
       const seconds = String(currentDate.getSeconds()).padStart(2, '0');
       const dataCreate = `${day}.${month}.${year} / ${hours}:${minutes}:${seconds}`;
-      //??? формирую id
-      const id = itemList.length === 0 ? 1 : Math.max(...itemList.map(item => item.id)) + 1;
 
-      //новый объект на обновление
+      // формирую уникальный идентификатор
+      const id = itemList.length === 0 ? 0 : Math.max(...itemList.map(item => item.id)) + 1;
+
+      // формирую новый объект
       const newItem = {
         id: id,
         titleTask: inputTaskAddValue,
@@ -36,18 +36,17 @@ function App() {
         status: 'new',
       };
 
-      //???
+      // добавляю новый объект в массив объектов состояния itemList
       setItemList(prevItemList => [...prevItemList, newItem]);
     } else {
       alert('Поле ввода пустое или с пробелами, необходимо добавить содержимое!');
-      setInputTaskAddValue('');
     }
     setInputTaskAddValue('');
   };
   //#endregion CREATE ITEM
 
   //#region READ ITEMS
-  //??? инициализация
+  // инициализация, чтение элементов при первом запуске с помощью useEffect
   React.useEffect(() => {
     const localStorageData = JSON.parse(localStorage.getItem('itemList'));
 
