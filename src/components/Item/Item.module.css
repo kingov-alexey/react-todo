@@ -1,6 +1,7 @@
 .tableRow {
     display: flex;
     background-color: #fff;
+
 }
 
 .tableRow:hover {
@@ -10,7 +11,9 @@
     /* background-repeat: repeat-x; */
     background-size: cover;
 
+
 }
+
 
 .tableCell {
     flex: 1;

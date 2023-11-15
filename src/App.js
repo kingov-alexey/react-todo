@@ -12,8 +12,10 @@ function App() {
   const [inputTaskAddValue, setInputTaskAddValue] = React.useState('');
   const [inputFilterValue, setInputFilterValue] = React.useState('');
   const [inputEditValue, setInputEditValue] = React.useState('');
+
+  const [modalInfoIsOpen, setModalInfoIsOpen] = React.useState(false);
+  const [modalAboutAppIsOpen, setModalAboutAppIsOpen] = React.useState(false);
   const [modalEditIsOpen, setModalEditIsOpen] = React.useState(false);
-  const [modalAlertIsOpen, setModalAlertIsOpen] = React.useState(false);
 
   //#region CREATE ITEM
   const onAddClick = () => {
@@ -21,56 +23,49 @@ function App() {
       // формирую дату и время
       const currentDate = new Date();
       const year = currentDate.getFullYear();
-      const month = String(currentDate.getMonth() + 1).padStart(2, "0");
-      const day = String(currentDate.getDate()).padStart(2, "0");
-      const hours = String(currentDate.getHours()).padStart(2, "0");
-      const minutes = String(currentDate.getMinutes()).padStart(2, "0");
-      const seconds = String(currentDate.getSeconds()).padStart(2, "0");
+      const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+      const day = String(currentDate.getDate()).padStart(2, '0');
+      const hours = String(currentDate.getHours()).padStart(2, '0');
+      const minutes = String(currentDate.getMinutes()).padStart(2, '0');
+      const seconds = String(currentDate.getSeconds()).padStart(2, '0');
       const dataCreate = `${day}.${month}.${year} / ${hours}:${minutes}:${seconds}`;
 
       // формирую уникальный идентификатор
-      const id =
-        itemList.length === 0
-          ? 0
-          : Math.max(...itemList.map((item) => item.id)) + 1;
+      const id = itemList.length === 0 ? 0 : Math.max(...itemList.map(item => item.id)) + 1;
 
       // формирую новый объект
       const newItem = {
         id: id,
         titleTask: inputTaskAddValue,
         date: dataCreate,
-        status: "new",
+        status: 'new',
       };
 
       // добавляю новый объект в массив объектов состояния itemList
-      setItemList((prevItemList) => [...prevItemList, newItem]);
+      setItemList(prevItemList => [...prevItemList, newItem]);
     } else {
-      openModalAlert();
+      openModalInfo();
     }
-    setInputTaskAddValue("");
+    setInputTaskAddValue('');
   };
   //#endregion CREATE ITEM
 
   //#region READ ITEMS
   // инициализация, чтение элементов при первом запуске с помощью useEffect
   React.useEffect(() => {
-    const localStorageData = JSON.parse(localStorage.getItem("itemList"));
+    const localStorageData = JSON.parse(localStorage.getItem('itemList'));
 
     if (localStorageData && localStorageData.length > 0) {
       setItemList(localStorageData);
     } else {
-      setItemList((prevItemList) =>
-        prevItemList.length === 0 ? mockData : prevItemList
-      );
+      setItemList(prevItemList => (prevItemList.length === 0 ? mockData : prevItemList));
     }
   }, []);
   //#endregion READ ITEMS
 
   //#region UPDATE ITEM
   const updateItemById = (id, newItem) => {
-    const newItemList = itemList.map((item) =>
-      item.id === id ? { ...item, ...newItem } : item
-    );
+    const newItemList = itemList.map(item => (item.id === id ? { ...item, ...newItem } : item));
 
     setItemList(newItemList);
   };
@@ -90,18 +85,14 @@ function App() {
   //#endregion UPDATE ITEM
 
   //#region DELETE ITEM
-  const onDeleteClick = (idToRemove) => {
-    setItemList((prevItemList) =>
-      prevItemList.filter((item) => item.id !== idToRemove)
-    );
+  const onDeleteClick = idToRemove => {
+    setItemList(prevItemList => prevItemList.filter(item => item.id !== idToRemove));
   };
   //#endregion DELETE ITEM
 
   //#region SORT
   const onSortByNameClick = () => {
-    const sortedList = [...itemList].sort((a, b) =>
-      a.titleTask.localeCompare(b.titleTask)
-    );
+    const sortedList = [...itemList].sort((a, b) => a.titleTask.localeCompare(b.titleTask));
     setItemList(sortedList);
   };
 
@@ -115,51 +106,59 @@ function App() {
   };
 
   const onSortByStatusClick = () => {
-    alert("onSortByStatusClick");
+    alert('onSortByStatusClick');
   };
   //#endregion SORT
 
   //#region FILTER
   const onFilterTextChange = () => {
-    const filteredList = itemList.filter((item) =>
+    const filteredList = itemList.filter(item =>
       item.text.toLowerCase().includes(inputFilterValue.toLowerCase())
     );
     setItemList(filteredList);
   };
   //#endregion FILTER
 
-    //#region Modals
-    const openModalEdit = () => {
-      setModalEditIsOpen(true);
-    };
-  
-    const closeModalEdit = () => {
-      setModalEditIsOpen(false);
-    };
-  
-    const openModalAlert = () => {
-      setModalAlertIsOpen(true);
-    };
-  
-    const closeModalAlert = () => {
-      setModalAlertIsOpen(false);
-    };
-    //#endregion Modals
+  //#region Modals
+  const openModalEdit = () => {
+    setModalEditIsOpen(true);
+  };
 
+  const closeModalEdit = () => {
+    setModalEditIsOpen(false);
+  };
+  const openModalAboutApp = () => {
+    setModalAboutAppIsOpen(true);
+  };
 
+  const closeModalAboutApp = () => {
+    setModalAboutAppIsOpen(false);
+  };
+
+  const openModalInfo = () => {
+    setModalInfoIsOpen(true);
+  };
+
+  const closeModalInfo = () => {
+    setModalInfoIsOpen(false);
+  };
+  //#endregion Modals
 
   return (
     <>
       <AppContext.Provider
         value={{
-          inputEditValue, 
+          openModalAboutApp,
+          modalAboutAppIsOpen,
+          closeModalAboutApp,
+          inputEditValue,
           setInputEditValue,
           modalEditIsOpen,
           closeModalEdit,
           openModalEdit,
-          modalAlertIsOpen,
-          closeModalAlert,
-          openModalAlert,
+          modalInfoIsOpen,
+          closeModalInfo,
+          openModalInfo,
           inputTaskAddValue,
           setInputTaskAddValue,
           onAddClick,
@@ -173,7 +172,7 @@ function App() {
           onFilterTextChange,
         }}
       >
-        <div className="wrapper">
+        <div className='wrapper'>
           <Header />
           <Filter />
           <Main
