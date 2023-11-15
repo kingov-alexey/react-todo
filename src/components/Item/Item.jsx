@@ -1,11 +1,12 @@
 import React from 'react';
 import styles from './Item.module.css';
 import Button from '../Button/Button';
-// import { AppContext } from "../../App";
+import { AppContext } from "../../App";
+import ModalEdit from '../Modal/Modal';
+import Input from '../Input/Input';
 
 function Item(props) {
-  // const { onDoneClick, onEditClick, onDeleteClick } =
-  //   React.useContext(AppContext);
+  const { modalEditIsOpen, closeModalEdit,openModalEdit, inputEditValue, setInputEditValue } = React.useContext(AppContext);
 
   const onDoneClick = props.onDoneClick;
   const onDeleteClick = props.onDeleteClick;
@@ -28,29 +29,65 @@ function Item(props) {
 
   const handleEditClick = () => {
     // const newItem
-    onEditClick(props.id);
+    // onEditClick(props.id);
+    openModalEdit();
+    
   };
 
   return (
     <>
+      <ModalEdit isOpen={modalEditIsOpen} onClose={closeModalEdit} title={`Editing a List Item: #`+props.id}>
+       
+       <div style={{display: 'flex', minWidth: '300px', justifyContent: 'space-around'}}>          
+        <Input
+            placeholder="Enter new value"
+            className="inputEditValue"
+            value={props.text}
+            onChange={setInputEditValue}
+          />
+                  <Button
+            text="✔ Edit"
+            className="buttonEdit"
+            onClick={handleEditClick}
+          />
+        </div>
+      </ModalEdit>
       <div
-        className={`${styles.tableRow} ${props.status === 'done' ? styles.greenBackground : ''}`}
+        className={`${styles.tableRow} ${
+          props.status === "done" ? styles.greenBackground : ""
+        }`}
       >
         <div className={styles.tableCell}>{props.id}</div>
         <div className={styles.tableCell}>{props.text}</div>
         <div className={styles.tableCell}>{props.date}</div>
         <div className={styles.tableCell}>
-          {props.status === 'done' ? (
-            <Button text='✔ Done' className='buttonDone' onClick={handleDoneClick} />
+          {props.status === "done" ? (
+            <Button
+              text="✔ Done"
+              className="buttonDone"
+              onClick={handleDoneClick}
+            />
           ) : (
-            <Button text='New' className='buttonDone' onClick={handleDoneClick} />
+            <Button
+              text="New"
+              className="buttonDone"
+              onClick={handleDoneClick}
+            />
           )}
         </div>
         <div className={styles.tableCell}>
-          <Button text='🖋 Edit' className='buttonEdit' onClick={handleEditClick} />
+          <Button
+            text="🖋 Edit"
+            className="buttonEdit"
+            onClick={handleEditClick}
+          />
         </div>
         <div className={styles.tableCell}>
-          <Button text='✖ Delete' className='buttonDelete' onClick={handleDeleteClick} />
+          <Button
+            text="✖ Delete"
+            className="buttonDelete"
+            onClick={handleDeleteClick}
+          />
         </div>
       </div>
     </>

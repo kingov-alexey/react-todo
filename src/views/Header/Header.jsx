@@ -4,9 +4,10 @@ import Button from "../../components/Button/Button";
 import Input from "../../components/Input/Input";
 import { AppContext } from "../../App";
 import logoImage from "../../assets/images/logoImage.png";
+import Modal from "../../components/Modal/Modal";
 
 function Header() {
-  const { onAddClick, inputTaskAddValue, setInputTaskAddValue } =
+  const { onAddClick, inputTaskAddValue, setInputTaskAddValue, closeModalAlert, modalAlertIsOpen,inputRef } =
     React.useContext(AppContext);
 
   const value = {
@@ -20,6 +21,10 @@ function Header() {
   return (
     <>
       <header className={styles.header}>
+      <Modal 
+        isOpen={modalAlertIsOpen} 
+        onClose={closeModalAlert} 
+        title='Поле ввода пустое или с пробелами, необходимо добавить содержимое!'/>
         <div
           className={styles.logo}
           onClick={() => {
