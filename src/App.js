@@ -78,15 +78,14 @@ function App() {
     updateItemById(id, newItem);
   };
 
-  //??? обновление локалСтораж
   React.useEffect(() => {
     localStorage.setItem('itemList', JSON.stringify(itemList));
   }, [itemList]);
   //#endregion UPDATE ITEM
 
   //#region DELETE ITEM
-  const onDeleteClick = idToRemove => {
-    setItemList(prevItemList => prevItemList.filter(item => item.id !== idToRemove));
+  const onDeleteClick = id => {
+    setItemList(prevItemList => prevItemList.filter(item => item.id !== id));
   };
   //#endregion DELETE ITEM
 
@@ -121,6 +120,7 @@ function App() {
 
   //#region Modals
   const openModalEdit = () => {
+    console.log('asdaaaa');
     setModalEditIsOpen(true);
   };
 

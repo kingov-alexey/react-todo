@@ -4,7 +4,7 @@ import styles from './ModalEdit.module.css';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
 
-const ModalEdit = (props, { isOpen, onClose, children, title }) => {
+const ModalEdit = (props, { isOpen, onClose, title }) => {
   const handleClick = e => {
     if (e.target === e.currentTarget) {
       onClose();

@@ -5,12 +5,10 @@ import { AppContext } from '../../App';
 import ModalEdit from '../ModalEdit/ModalEdit';
 
 function Item(props) {
-  const { modalEditIsOpen, closeModalEdit, openModalEdit, inputEditValue, setInputEditValue } =
-    React.useContext(AppContext);
+  const {  } = React.useContext(AppContext);
 
   const onDoneClick = props.onDoneClick;
   const onDeleteClick = props.onDeleteClick;
-  const onEditClick = props.onEditClick;
 
   const handleDoneClick = () => {
     const newStatus = props.status === 'done' ? 'new' : 'done';

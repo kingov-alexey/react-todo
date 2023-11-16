@@ -8,7 +8,7 @@ function Input(props) {
   const [placeholder, setPlaceholder] = React.useState('');
 
   const initialPlaceholder = props.placeholder;
-  // ......
+
   React.useEffect(() => {
     const placeholderText = initialPlaceholder;
     let index = 0;
@@ -25,14 +25,12 @@ function Input(props) {
       if (index === placeholderText.length) {
         clearInterval(intervalId);
       }
-    }, 100); // Интервал появления букв (в миллисекундах)
+    }, 100);
 
     return () => clearInterval(intervalId);
   }, [initialPlaceholder]);
-  // ......
 
   const className = styles[props.className];
-  // const placeholder = props.placeholder;
   const value = props.value;
   const onChange = props.onChange;
 
