@@ -80,3 +80,17 @@
 .headerCell:nth-child(6) {
     max-width: 140px;
 }
+
+.iconSortASC {
+    width: 18px;
+    height: 18px;
+    background-image: url(./../../assets/images/icon/iconSort.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: transform 0.1s ease-in-out;
+    margin: 5px;
+}
+.iconSortASC:hover {
+    background-image: url(./../../assets/images/icon/iconSortActive.png);
+    cursor: pointer;
+}

@@ -17,6 +17,8 @@ function App() {
   const [modalAboutAppIsOpen, setModalAboutAppIsOpen] = React.useState(false);
   const [modalEditIsOpen, setModalEditIsOpen] = React.useState(false);
 
+  const [sortDirection, setSortDirection] = React.useState('asc'); // 'asc' или 'desc'
+
   //#region CREATE ITEM
   const onAddClick = () => {
     if (inputTaskAddValue && inputTaskAddValue.trim().length > 0) {
@@ -91,21 +93,52 @@ function App() {
 
   //#region SORT
   const onSortByNameClick = () => {
-    const sortedList = [...itemList].sort((a, b) => a.titleTask.localeCompare(b.titleTask));
-    setItemList(sortedList);
+    const sortedItemList = [...itemList].sort((a, b) => {
+      if (sortDirection === 'asc') {
+        return a.titleTask.localeCompare(b.titleTask);
+      } else {
+        return b.titleTask.localeCompare(a.titleTask);
+      }
+    });
+
+    setItemList(sortedItemList);
+    setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
   };
 
   const onSortByDateClick = () => {
-    const sortedList = [...itemList].sort((a, b) => {
-      const dateA = new Date(a.date);
-      const dateB = new Date(b.date);
-      return dateA - dateB;
+    const sortedItemList = [...itemList].sort((a, b) => {
+      const dateA = convertToDateObject(a.date);
+      const dateB = convertToDateObject(b.date);
+
+      if (sortDirection === 'asc') {
+        return dateA - dateB;
+      } else {
+        return dateB - dateA;
+      }
     });
-    setItemList(sortedList);
+
+    setItemList(sortedItemList);
+    setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
+  };
+
+  const convertToDateObject = dateString => {
+    const [datePart, timePart] = dateString.split(' / ');
+    const [day, month, year] = datePart.split('.');
+    const [hour, minute, second] = timePart.split(':');
+    return new Date(year, month - 1, day, hour, minute, second);
   };
 
   const onSortByStatusClick = () => {
-    alert('onSortByStatusClick');
+    const sortedItemList = [...itemList].sort((a, b) => {
+      if (sortDirection === 'asc') {
+        return a.status.localeCompare(b.status);
+      } else {
+        return b.status.localeCompare(a.status);
+      }
+    });
+
+    setItemList(sortedItemList);
+    setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
   };
   //#endregion SORT
 
@@ -148,6 +181,7 @@ function App() {
     <>
       <AppContext.Provider
         value={{
+          onSortByNameClick,
           openModalAboutApp,
           modalAboutAppIsOpen,
           closeModalAboutApp,

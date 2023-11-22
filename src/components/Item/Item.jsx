@@ -26,18 +26,15 @@ function Item(props) {
   };
 
   const handleEditClick = () => {
-    // const newItem
-    // onEditClick(props.id);
-    alert('asdf');
-    openModalEdit();
+    alert(`Edit element ID: ${props.id}`);
   };
 
   return (
     <>
       <ModalEdit
-        isOpen={modalEditIsOpen}
-        onClose={closeModalEdit}
-        title={`Editing a List Item: #` + props.id}
+        // isOpen={modalEditIsOpen}
+        // onClose={closeModalEdit}
+        // title={`Editing a List Item: #` + props.id}
       ></ModalEdit>
       <div
         className={`${styles.tableRow} ${props.status === 'done' ? styles.greenBackground : ''}`}
