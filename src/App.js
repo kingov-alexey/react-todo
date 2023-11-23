@@ -18,7 +18,7 @@ function App() {
   const [modalAboutAppIsOpen, setModalAboutAppIsOpen] = React.useState(false);
   const [modalEditIsOpen, setModalEditIsOpen] = React.useState(false);
 
-  const [sortDirection, setSortDirection] = React.useState('asc'); // 'asc' или 'desc'
+  const [sortDirection, setSortDirection] = React.useState('asc');
 
   //#region CREATE ITEM
   const onAddClick = () => {
@@ -88,11 +88,10 @@ function App() {
 
   //#region DELETE ITEM
   const onDeleteClick = id => {
-    // const isDelete = window.confirm('Are you sure you want to delete this item?');
-    // if (isDelete) {
-    //   setItemList(prevItemList => prevItemList.filter(item => item.id !== id));
-    // }
-    setItemList(prevItemList => prevItemList.filter(item => item.id !== id));
+    const isDelete = window.confirm('Are you sure you want to delete this item?');
+    if (isDelete) {
+      setItemList(prevItemList => prevItemList.filter(item => item.id !== id));
+    }
   };
   //#endregion DELETE ITEM
 
@@ -190,30 +189,35 @@ function App() {
     <>
       <AppContext.Provider
         value={{
-          onSortByNameClick,
-          openModalAboutApp,
           modalAboutAppIsOpen,
-          closeModalAboutApp,
-          inputEditValue,
-          setInputEditValue,
           modalEditIsOpen,
-          closeModalEdit,
-          openModalEdit,
           modalInfoIsOpen,
+
+          closeModalAboutApp,
           closeModalInfo,
+          closeModalEdit,
+
+          openModalAboutApp,
           openModalInfo,
+          openModalEdit,
+          
+          inputEditValue,
+          inputFilterValue,
           inputTaskAddValue,
+
           setInputTaskAddValue,
-          onAddClick,
-          onDoneClick,
-          onEditClick,
-          onDeleteClick,
           setInputFilterValue,
+          setInputEditValue,
+
           onSortByNameClick,
           onSortByDateClick,
           onSortByStatusClick,
           onFilterTextChange,
-          inputFilterValue
+
+          onAddClick,
+          onDoneClick,
+          onEditClick,
+          onDeleteClick,
         }}
       >
         <div className='wrapper'>

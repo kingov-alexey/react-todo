@@ -2,7 +2,6 @@ import React from 'react';
 import styles from './Item.module.css';
 import Button from '../Button/Button';
 import { AppContext } from '../../App';
-import ModalEdit from '../ModalEdit/ModalEdit';
 
 function Item(props) {
   const {  } = React.useContext(AppContext);
@@ -31,11 +30,6 @@ function Item(props) {
 
   return (
     <>
-      <ModalEdit
-        // isOpen={modalEditIsOpen}
-        // onClose={closeModalEdit}
-        // title={`Editing a List Item: #` + props.id}
-      ></ModalEdit>
       <div
         className={`${styles.tableRow} ${props.status === 'done' ? styles.greenBackground : ''}`}
       >
