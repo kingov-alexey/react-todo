@@ -22,6 +22,7 @@
 .inputTaskAdd,
 .inputFilter:focus {
     outline: none;
+    font-family: 'Vollkorn', serif;
 }
 
 .inputTaskAdd,

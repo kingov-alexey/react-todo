@@ -7,5 +7,6 @@ export const mockData = [
     date: '03.03.2023 / 17:15:00',
     status: 'new',
   },
-  { id: '3', titleTask: 'mockData_3: MERN', date: '01.01.2023 / 17:00:00', status: 'new' },
+  { id: '3', titleTask: 'mockData_2: React, Redux, libs, TypeScript', date: '04.04.2023 / 17:00:00', status: 'new' },
+  { id: '4', titleTask: 'mockData_4: MERN', date: '01.01.2023 / 17:00:00', status: 'new' },
 ];

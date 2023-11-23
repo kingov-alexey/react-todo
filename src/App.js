@@ -9,6 +9,7 @@ export const AppContext = React.createContext(null);
 
 function App() {
   const [itemList, setItemList] = React.useState([]);
+  const [filteredItemList, setFilteredItemList] = React.useState(itemList);
   const [inputTaskAddValue, setInputTaskAddValue] = React.useState('');
   const [inputFilterValue, setInputFilterValue] = React.useState('');
   const [inputEditValue, setInputEditValue] = React.useState('');
@@ -87,6 +88,10 @@ function App() {
 
   //#region DELETE ITEM
   const onDeleteClick = id => {
+    // const isDelete = window.confirm('Are you sure you want to delete this item?');
+    // if (isDelete) {
+    //   setItemList(prevItemList => prevItemList.filter(item => item.id !== id));
+    // }
     setItemList(prevItemList => prevItemList.filter(item => item.id !== id));
   };
   //#endregion DELETE ITEM
@@ -145,15 +150,19 @@ function App() {
   //#region FILTER
   const onFilterTextChange = () => {
     const filteredList = itemList.filter(item =>
-      item.text.toLowerCase().includes(inputFilterValue.toLowerCase())
+      item.titleTask.toLowerCase().includes(inputFilterValue.toLowerCase())
     );
-    setItemList(filteredList);
+    setFilteredItemList(filteredList);
   };
+
+  React.useEffect(()=>{
+    onFilterTextChange();
+  },[inputFilterValue, itemList]);
   //#endregion FILTER
 
   //#region Modals
   const openModalEdit = () => {
-    console.log('asdaaaa');
+    console.log('openModalEdit');
     setModalEditIsOpen(true);
   };
 
@@ -204,6 +213,7 @@ function App() {
           onSortByDateClick,
           onSortByStatusClick,
           onFilterTextChange,
+          inputFilterValue
         }}
       >
         <div className='wrapper'>
@@ -213,7 +223,7 @@ function App() {
             onDoneClick={onDoneClick}
             onEditClick={onEditClick}
             onDeleteClick={onDeleteClick}
-            itemList={itemList}
+            itemList={inputFilterValue ? filteredItemList : itemList }
           />
           <Footer />
         </div>

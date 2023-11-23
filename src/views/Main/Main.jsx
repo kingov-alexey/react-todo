@@ -7,12 +7,18 @@ function Main({ onDoneClick, onEditClick, onDeleteClick, itemList }) {
     <>
       <main className={styles.main}>
         <div className={styles.itemList}>
-          <ItemList
-            onDoneClick={onDoneClick}
-            onEditClick={onEditClick}
-            onDeleteClick={onDeleteClick}
-            itemList={itemList}
-          />
+        {itemList.length > 0 ? (
+            <ItemList
+              onDoneClick={onDoneClick}
+              onEditClick={onEditClick}
+              onDeleteClick={onDeleteClick}
+              itemList={itemList}
+            />
+          ) : (
+            <div className={styles.noData}>
+              <span> <strong>No data</strong></span>
+            </div>
+          )}
         </div>
       </main>
     </>

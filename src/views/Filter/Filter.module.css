@@ -32,3 +32,12 @@
     margin-top: 5px;
 
 }
+
+.iconClear{
+    background-image: url(./../../assets/images/icon/iconClear.png);
+    background-repeat: no-repeat;
+    background-size:contain;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+}

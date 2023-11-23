@@ -12,6 +12,11 @@ function Filter() {
     onSortByDateClick,
     onSortByStatusClick,
   } = React.useContext(AppContext);
+
+  const handleClickClear = () =>{
+    setInputFilterValue('');
+  }
+
   return (
     <>
       <div className={styles.wrap}>
@@ -23,6 +28,12 @@ function Filter() {
             value={inputFilterValue}
             onChange={setInputFilterValue}
           />
+
+          {inputFilterValue ? (
+            <div className={styles.iconClear} onClick={handleClickClear}></div>
+          ) : (
+            ''
+          )}
         </div>
         <div className={styles.buttonBlock}>
           <Button text='SortByName' className='buttonStock' onClick={onSortByNameClick} />
