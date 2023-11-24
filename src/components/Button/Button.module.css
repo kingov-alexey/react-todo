@@ -26,9 +26,11 @@
     border-radius: 15px;
     border: 1px solid #000;
     width: 213px;
-    height: 95px;
+    height: 85px;
     cursor: pointer;
     font-size: 30px;
+    margin-top: 10px;
+
 }
 
 .buttonADDIcon {
